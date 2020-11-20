@@ -1,0 +1,35 @@
+自动驾驶模型:
+    train: train_record_transform, val_record_transform 预处理部分!
+    run: 无预处理
+
+run:
+    Vehicle:
+        相机: 输出图像
+        cam: input = None; output = ['cam/image_array']
+
+        控制器: 输入图像, 输出 用户角度, 用户油门, 控制模式, 是否正在记录
+        ctr: input = ['cam/image_array']; output = ['user/angle', 'user/throttle', 'user/mode', 'recording']
+
+        自动驾驶模式触发: 输入控制模式, 输出 是否执行自动驾驶
+        pilot_condition_part: input = ['user/mode']; output = ['run_pilot']
+
+        自动驾驶模型: keras模型, 输入图像, 输出 自动角度, 自动油门, 由 'run_pilot' 触发
+        kl: input = ['cam/image_array']; output = ['pilot/angle', 'pilot/throttle']
+
+        模式选择: 输入 模式 和 4种控制量; 输出 相应模式下的角度和油门
+        drive_mode_part: inputs=[
+            'user/mode', 'user/angle', 'user/throttle', 'pilot/angle',
+            'pilot/throttle'];
+            outputs=['angle', 'throttle']
+
+        转角控制: 直接控制小车, 输入角度
+        steering: inputs = ['angle']
+
+        油门控制: 直接控制小车, 输入油门
+        throttle: inputs = ['throttle']
+
+        数据记录: 记录小车图像与油门
+        tub: inputs = [
+            'cam/image_array', 'user/angle', 'user/throttle', 'user/mode',
+            'timestamp'
+            ]
