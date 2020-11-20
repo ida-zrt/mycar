@@ -11,7 +11,7 @@ Options:
 import os
 from docopt import docopt
 import sys
-sys.path.append('../donkeycar-linux/')
+sys.path.append('../donkeycar_jetson_nano/')
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import donkeycar as dk
