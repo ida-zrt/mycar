@@ -11,14 +11,14 @@ Options:
 import os
 from docopt import docopt
 import sys
-sys.path.append('../donkeycar-linux/')
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# sys.path.append('../donkeycar-linux/')
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 import donkeycar as dk
 
 #import parts
-from donkeycar.parts.camera import PiCamera, CSICamera
-from donkeycar.parts.transform import Lambda
+# from donkeycar.parts.camera import PiCamera, CSICamera
+# from donkeycar.parts.transform import Lambda
 from donkeycar.parts.keras import KerasLinear, KerasCategorical
 from donkeycar.parts.datastore import TubGroup
 
