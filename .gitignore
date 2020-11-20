@@ -4,3 +4,4 @@ tub/*
 .vscode/*
 *.zip
 models/
+logs/*
