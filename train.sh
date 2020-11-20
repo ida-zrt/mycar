@@ -8,4 +8,4 @@
 #SBATCH --gres=gpu:2
 module load anaconda3/2019.07
 source activate xiaor
-python -u train.py --tub ./tub --model ./models/mypilot
+python -u train.py --tub ../data/train_test/tub --model ./models/mypilot
