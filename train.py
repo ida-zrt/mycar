@@ -74,6 +74,8 @@ def train(cfg, tub_names, new_model_path, base_model_path=None):
              steps=steps_per_epoch,
              train_split=cfg.TRAIN_TEST_SPLIT)
 
+    kl.model.save(new_model_path + '.h5', save_format='h5')
+
 
 if __name__ == '__main__':
     args = docopt(__doc__)
