@@ -8,7 +8,7 @@
 #SBATCH --gres=gpu:2
 module load anaconda3/2019.07
 module unload cuda/10.0
-module load cuda/9.1
+module load cuda/9.0
 source activate xiaor
 # python -u train.py --tub ../data/train_test/tub --model ./models/mypilot
 python -u modelconvert.py
